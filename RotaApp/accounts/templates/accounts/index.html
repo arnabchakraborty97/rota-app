@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+
+	Accounts
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">Accounts</div>
+			<div class="card-body">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<th>#</th>
+						<th>Username</th>
+						<th colspan="2">Actions</th>
+					</thead>
+					<tbody class="tbody-light">
+						{% for user in users %}
+							<tr>
+								<td>{{ user.id }}</td>
+								<td><a href="{% url 'accounts:profile' user.id %}">{{ user.username }}</a></td>
+								<td><a href="{% url 'accounts:user-edit' user.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+								<td><a href="{% url 'accounts:user-delete' user.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

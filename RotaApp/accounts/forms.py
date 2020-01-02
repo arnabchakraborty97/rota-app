@@ -14,6 +14,9 @@ class UserBasicForm(UserCreationForm):
 
 class MemberForm(forms.ModelForm):
 
+	date_of_birth = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={"type": "date"}))
+	date_of_joining = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={"type": "date"}))
+
 	class Meta:
 		model = Member
 		fields = ['role', 'phone', 'address', 'date_of_birth', 'date_of_joining', 'blood_group', 'designation']

@@ -1,1 +1,39 @@
-Register here
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+
+	Register
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="cntainer">
+		<div class="col-md-6 offset-md-3">
+			<div class="card">
+				<div class="card-header">Register</div>
+				<div class="card-body">
+					{% if error_message %}
+                        <strong>{{ error_message }}</strong>
+                    {% endif %}
+
+                    <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'accounts/form_template.html' %}
+                        {% include 'accounts/member_form.html' %}
+
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+{% endblock %}
