@@ -1,0 +1,48 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+
+	Events
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">Events</div>
+			<div class="card-body">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<th>#</th>
+						<th>Name</th>
+						{% if user.is_superuser %}
+							<th colspan="2">Actions</th>
+						{% endif %}
+					</thead>
+					<tbody class="tbody-light">
+						{% for event in events %}
+							<tr>
+								<td>{{ user.id }}</td>
+								<td><a href="{% url 'events:details' event.id %}">{{ event.name }}</a></td>
+								{% if user.is_superuser %}
+									<td><a href="{% url 'events:event-edit' event.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+									<td><a href="{% url 'events:event-delete' event.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	{% if user.is_superuser %}
+		<div class="text-center">
+			<a href="{% url 'events:create' %}" class="btn btn-success">Add Event</a>
+		</div>
+	{% endif %}
+
+{% endblock %}

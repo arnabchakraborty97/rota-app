@@ -16,6 +16,9 @@ urlpatterns = [
     # dashboard/
     url(r'dashboard/', include('dashboard.urls', namespace='dashboard')),
 
+    # events/
+    url(r'events/', include('events.urls', namespace='events')),
+
    	# Redirect all other urls
     url(r'^.*$', RedirectView.as_view(url=reverse_lazy('dashboard:index'))),
 
