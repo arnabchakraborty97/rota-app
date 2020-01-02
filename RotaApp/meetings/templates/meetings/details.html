@@ -1,0 +1,53 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+
+	Meeting Details
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">Meeting Details</div>
+			<div class="card-body">
+				<table class="table table-bordered">
+					<tbody class="tbody-light">
+						<tr>
+							<th>Number</th>
+							<td>{{ meeting.number }}</td>
+						</tr>
+						<tr>
+							<th>Agenda</th>
+							<td>{{ meeting.agenda|linebreaks }}</td>
+						</tr>
+						<tr>
+							<th>Date</th>
+							<td>{{ meeting.date }}</td>
+						</tr>
+						<tr>
+							<th>Venue</th>
+							<td>{{ meeting.venue }}</td>
+						</tr>
+						<tr>
+							<th>Time</th>
+							<td>{{ meeting.time }}</td>
+						</tr>
+						<tr>
+							<th>Minutes</th>
+							<td>{{ meeting.minutes }}</td>
+						</tr>
+						{% if meeting.resolutions %}
+							<tr>
+								<th>Resolutions</th>
+								<td>{{ meeting.resolutions|linebreaks }}</td>
+							</tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

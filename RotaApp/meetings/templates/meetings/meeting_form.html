@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Meeting form{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">Meeting Form</div>
+            <div class="card-body">
+
+                {% if error_message %}
+                    <strong>{{ error_message }}</strong>
+                {% endif %}
+
+                <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% include 'accounts/form_template.html' %}
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

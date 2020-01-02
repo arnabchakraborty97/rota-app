@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'dashboard',
     'events',
+    'meetings',
     'rest_framework',
 ]
 

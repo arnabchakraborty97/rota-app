@@ -19,6 +19,9 @@ urlpatterns = [
     # events/
     url(r'events/', include('events.urls', namespace='events')),
 
+    # meetings/
+    url(r'meetings/', include('meetings.urls', namespace='meetings')),
+
    	# Redirect all other urls
     url(r'^.*$', RedirectView.as_view(url=reverse_lazy('dashboard:index'))),
 

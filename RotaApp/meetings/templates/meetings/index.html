@@ -2,7 +2,7 @@
 
 {% block title %}
 
-	Events
+	Meetings
 
 {% endblock %}
 
@@ -10,24 +10,22 @@
 
 	<div class="container">
 		<div class="card">
-			<div class="card-header">Events</div>
+			<div class="card-header">Meetings</div>
 			<div class="card-body">
 				<table class="table table-bordered">
 					<thead class="thead-dark">
-						<th>#</th>
-						<th>Name</th>
+						<th>Number</th>
 						{% if user.is_superuser %}
 							<th colspan="2">Actions</th>
 						{% endif %}
 					</thead>
 					<tbody class="tbody-light">
-						{% for event in events %}
+						{% for meeting in meetings %}
 							<tr>
-								<td>{{ events.id }}</td>
-								<td><a href="{% url 'events:details' event.id %}">{{ event.name }}</a></td>
+								<td><a href="{% url 'meetings:details' meeting.id %}">{{ meeting.number }}</a></td>
 								{% if user.is_superuser %}
-									<td><a href="{% url 'events:event-edit' event.id %}" class="btn btn-primary btn-sm">Edit</a></td>
-									<td><a href="{% url 'events:event-delete' event.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+									<td><a href="{% url 'meetings:meeting-edit' meeting.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+									<td><a href="{% url 'meetings:meeting-delete' meeting.id %}" class="btn btn-danger btn-sm">Delete</a></td>
 								{% endif %}
 							</tr>
 						{% endfor %}
@@ -41,7 +39,7 @@
 
 	{% if user.is_superuser %}
 		<div class="text-center">
-			<a href="{% url 'events:create' %}" class="btn btn-success">Add Event</a>
+			<a href="{% url 'meetings:create' %}" class="btn btn-success">Add Meeting</a>
 		</div>
 	{% endif %}
 
